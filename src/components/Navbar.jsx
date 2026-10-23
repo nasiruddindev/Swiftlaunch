@@ -17,11 +17,11 @@ export default function Navbar({ config, onOpenContact }) {
           {/* Brand Logo */}
           <a href="#" className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white font-black text-lg shadow-sm">
-              W
+              S
             </div>
             <div>
               <span className="text-lg font-bold tracking-tight text-slate-900 flex items-center">
-                Webcraft<span className="text-blue-600 ml-1">BD</span>
+                SwiftLaunch<span className="text-blue-600 ml-1">BD</span>
               </span>
               <span className="text-[10px] text-slate-500 block -mt-1 font-medium">স্মার্ট ই-কমার্স সল্যুশন</span>
             </div>

@@ -223,7 +223,7 @@ export default function AdminModal({ isOpen, onClose }) {
                       <div className="flex items-center gap-2 shrink-0">
                         {/* WhatsApp Direct message */}
                         <a
-                          href={`https://wa.me/${lead.phone.replace(/[^0-9]/g, '')}?text=হ্যালো%20${encodeURIComponent(lead.name)},%20Webcraft%20BD%20থেকে%20নাসির%20বলছি।%20আপনার%20ওয়েবসাইট%20অর্ডারটি%20নিয়ে%20কথা%20বলতে%20চাই।`}
+                          href={`https://wa.me/${lead.phone.replace(/[^0-9]/g, '')}?text=হ্যালো%20${encodeURIComponent(lead.name)},%20SwiftLaunch%20BD%20থেকে%20নাসির%20বলছি।%20আপনার%20ওয়েবসাইট%20অর্ডারটি%20নিয়ে%20কথা%20বলতে%20চাই।`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="p-2 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-lg border border-emerald-200"

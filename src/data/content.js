@@ -1,10 +1,10 @@
 export const siteConfig = {
-  brandName: "Webcraft BD",
+  brandName: "SwiftLaunch BD",
   tagline: "০ টাকা অগ্রিমে প্রফেশনাল বিজনেস ও স্মার্ট ই-কমার্স ওয়েবসাইট",
   founder: "নাসির",
   phone: "+880 1889-013446",
   whatsapp: "8801889013446",
-  email: "contact@webcraft-bd.com",
+  email: "contact@swiftlaunchbd.com",
   location: "ঢাকা, বাংলাদেশ",
   
   announcement: "🔥 বিশেষ অফার: ০ টাকা অগ্রিমে ওয়েবসাইট তৈরির সুযোগ — আগে কাজ দেখে পছন্দ হলে তারপর পেমেন্ট!",
