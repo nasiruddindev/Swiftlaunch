@@ -39,13 +39,11 @@ export default function Contact({ config, preselectedPlan, preselectedDemo }) {
     setIsSubmitting(true);
 
     try {
-      // 1. Save to Firebase Database
       await addLead(formData);
     } catch (err) {
       console.warn("Could not save to db, proceeding with whatsapp:", err);
     }
 
-    // 2. Format WhatsApp Message
     const text = `*ওয়েবসাইট অর্ডার / অনুসন্ধান:*
 👤 নাম: ${formData.name}
 📱 মোবাইল: ${formData.phone}
@@ -59,7 +57,6 @@ export default function Contact({ config, preselectedPlan, preselectedDemo }) {
     setIsSubmitting(false);
     setSubmitted(true);
 
-    // 3. Open WhatsApp
     window.open(whatsappUrl, '_blank');
   };
 
@@ -69,10 +66,10 @@ export default function Contact({ config, preselectedPlan, preselectedDemo }) {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="text-blue-600 font-bold text-xs uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
+          <span className="text-blue-600 font-bold text-xs uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full border border-blue-100 shadow-xs inline-block">
             অর্ডার ও ফ্রি কনসালটেশন
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-3 mb-2">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-3 mb-2 tracking-tight">
             আজই আপনার ওয়েবসাইটের কাজ শুরু করুন
           </h2>
           <p className="text-slate-600 text-sm">
@@ -84,23 +81,23 @@ export default function Contact({ config, preselectedPlan, preselectedDemo }) {
           
           {/* Left Column: Direct WhatsApp & Info */}
           <div className="md:col-span-5 space-y-4">
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-xs space-y-4">
               <div className="flex items-center gap-2 text-emerald-600 font-bold text-sm">
-                <ShieldCheck className="w-5 h-5" />
+                <ShieldCheck className="w-5 h-5 animate-pulse" />
                 <span>০ টাকা অগ্রিম গ্যারান্টি</span>
               </div>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-slate-600 leading-relaxed font-normal">
                 কোনো অগ্রিম পেমেন্ট ছাড়াই আপনার রিকোয়ারমেন্ট অনুযায়ী ওয়েবসাইট ডেমো বানিয়ে দেখাব। পছন্দ হলে তারপর পেমেন্ট!
               </p>
 
-              {/* Direct WhatsApp Box */}
+              {/* Direct WhatsApp Box with hover lift */}
               <a
                 href={`https://wa.me/${config.whatsapp}?text=হ্যালো,%20আমি%20একটি%20ওয়েবসাইট%20বানাতে%20চাই`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3.5 p-3.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-950 transition-colors"
+                className="flex items-center gap-3.5 p-3.5 rounded-xl bg-emerald-50 hover:bg-emerald-100/90 border border-emerald-200/90 text-emerald-950 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-xs hover:shadow group"
               >
-                <div className="w-10 h-10 rounded-lg bg-emerald-600 text-white flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-110 transition-transform">
                   <MessageCircle className="w-5 h-5" />
                 </div>
                 <div>
@@ -109,9 +106,9 @@ export default function Contact({ config, preselectedPlan, preselectedDemo }) {
                 </div>
               </a>
 
-              {/* Direct Phone */}
-              <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900">
-                <div className="w-10 h-10 rounded-lg bg-blue-600 text-white flex items-center justify-center shrink-0">
+              {/* Direct Phone with hover lift */}
+              <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-50 hover:bg-slate-100/80 border border-slate-200 text-slate-900 transition-all hover:scale-[1.02] group">
+                <div className="w-10 h-10 rounded-lg bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-110 transition-transform">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
@@ -129,7 +126,7 @@ export default function Contact({ config, preselectedPlan, preselectedDemo }) {
 
           {/* Right Column: Order Form */}
           <div className="md:col-span-7">
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-xs">
+            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/90 shadow-xs hover:border-slate-300 transition-colors">
               {submitted ? (
                 <div className="text-center py-8 space-y-3">
                   <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
@@ -143,7 +140,7 @@ export default function Contact({ config, preselectedPlan, preselectedDemo }) {
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="text-xs font-bold text-blue-600 underline pt-2"
+                    className="text-xs font-bold text-blue-600 hover:text-blue-700 underline pt-2"
                   >
                     আরেকটি মেসেজ পাঠান
                   </button>
@@ -166,7 +163,7 @@ export default function Contact({ config, preselectedPlan, preselectedDemo }) {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="আপনার নাম"
-                        className="w-full px-3.5 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-xs text-slate-800"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 hover:border-slate-300 focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-600 text-xs text-slate-800 transition-all"
                       />
                     </div>
 
@@ -181,7 +178,7 @@ export default function Contact({ config, preselectedPlan, preselectedDemo }) {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="017xxxxxxxx"
-                        className="w-full px-3.5 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-xs text-slate-800"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 hover:border-slate-300 focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-600 text-xs text-slate-800 transition-all"
                       />
                     </div>
                   </div>
@@ -197,7 +194,7 @@ export default function Contact({ config, preselectedPlan, preselectedDemo }) {
                         value={formData.businessName}
                         onChange={handleChange}
                         placeholder="যেমন: ফ্যাশন হাউজ"
-                        className="w-full px-3.5 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-xs text-slate-800"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 hover:border-slate-300 focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-600 text-xs text-slate-800 transition-all"
                       />
                     </div>
 
@@ -209,7 +206,7 @@ export default function Contact({ config, preselectedPlan, preselectedDemo }) {
                         name="package"
                         value={formData.package}
                         onChange={handleChange}
-                        className="w-full px-3.5 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-xs text-slate-800 bg-white"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 hover:border-slate-300 focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-600 text-xs text-slate-800 bg-white transition-all cursor-pointer"
                       >
                         <option value="ফুল স্মার্ট ই-কমার্স স্টোর (৳১২,৯৯৯)">ফুল স্মার্ট ই-কমার্স শপ (৳১২,৯৯৯)</option>
                         <option value="স্টার্টার ল্যান্ডিং পেজ (৳৫,৯৯৯)">স্টার্টার ল্যান্ডিং পেজ (৳৫,৯৯৯)</option>
@@ -228,19 +225,20 @@ export default function Contact({ config, preselectedPlan, preselectedDemo }) {
                       value={formData.note}
                       onChange={handleChange}
                       placeholder="যেমন: ৩ দিনে ডেলিভারি দরকার, বিকাশ অটোপে লাগবে..."
-                      className="w-full px-3.5 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-xs text-slate-800"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 hover:border-slate-300 focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-600 text-xs text-slate-800 transition-all"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md shadow-blue-600/20 transition-all disabled:opacity-70"
+                    className="w-full relative group overflow-hidden py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 disabled:opacity-70"
                   >
+                    <span className="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:left-full transition-all duration-700" />
                     {isSubmitting ? (
                       <Loader2 className="w-4 h-4 animate-spin" />
                     ) : (
-                      <Send className="w-4 h-4" />
+                      <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     )}
                     <span>WhatsApp-এ অর্ডার পাঠান (০ টাকা অগ্রিমে)</span>
                   </button>

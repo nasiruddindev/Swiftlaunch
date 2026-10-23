@@ -8,10 +8,10 @@ export default function Pricing({ pricing, onSelectPackage }) {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-blue-600 font-bold text-xs uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
+          <span className="text-blue-600 font-bold text-xs uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full border border-blue-100 shadow-xs inline-block">
             স্বচ্ছ মূল্য তালিকা
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-3 mb-2">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-3 mb-2 tracking-tight">
             আপনার বাজেট অনুযায়ী সঠিক প্ল্যানটি বেছে নিন
           </h2>
           <p className="text-slate-600 text-sm">
@@ -19,20 +19,20 @@ export default function Pricing({ pricing, onSelectPackage }) {
           </p>
         </div>
 
-        {/* 2 Plans Grid */}
+        {/* 2 Plans Grid with hover elevate */}
         <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
           {pricing.map((plan, idx) => (
             <div
               key={idx}
-              className={`rounded-2xl p-7 flex flex-col justify-between transition-all ${
+              className={`rounded-2xl p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 group interactive-card ${
                 plan.popular
-                  ? 'bg-slate-900 text-white shadow-xl border-2 border-blue-500 relative'
-                  : 'bg-[#fafafa] text-slate-900 border border-slate-200'
+                  ? 'bg-slate-900 text-white shadow-xl hover:shadow-2xl hover:shadow-blue-900/30 border-2 border-blue-500 relative'
+                  : 'bg-[#fafafa] hover:bg-white text-slate-900 border border-slate-200 hover:border-blue-300 hover:shadow-xl'
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[11px] font-bold px-3.5 py-1 rounded-full shadow-sm flex items-center gap-1">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[11px] font-bold px-3.5 py-1 rounded-full shadow-md flex items-center gap-1 group-hover:scale-105 transition-transform">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
                   <span>{plan.badge}</span>
                 </div>
               )}
@@ -60,7 +60,7 @@ export default function Pricing({ pricing, onSelectPackage }) {
                 <ul className="space-y-2.5 mb-8">
                   {plan.features.map((feat, fIdx) => (
                     <li key={fIdx} className="flex items-start gap-2.5 text-xs sm:text-sm">
-                      <div className={`p-0.5 rounded-full mt-0.5 shrink-0 ${plan.popular ? 'bg-blue-500 text-white' : 'bg-emerald-100 text-emerald-600'}`}>
+                      <div className={`p-0.5 rounded-full mt-0.5 shrink-0 transition-transform group-hover:scale-110 ${plan.popular ? 'bg-blue-500 text-white' : 'bg-emerald-100 text-emerald-600'}`}>
                         <Check className="w-3 h-3" />
                       </div>
                       <span className={plan.popular ? 'text-slate-200' : 'text-slate-700'}>
@@ -73,14 +73,14 @@ export default function Pricing({ pricing, onSelectPackage }) {
 
               <button
                 onClick={() => onSelectPackage(plan.name)}
-                className={`w-full py-3 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all ${
+                className={`w-full py-3.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-[0.98] group/btn ${
                   plan.popular
-                    ? 'bg-blue-600 hover:bg-blue-500 text-white shadow-md shadow-blue-600/30'
-                    : 'bg-slate-900 hover:bg-slate-800 text-white'
+                    ? 'bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/30'
+                    : 'bg-slate-900 hover:bg-slate-800 text-white shadow-md'
                 }`}
               >
                 <span>{plan.ctaText}</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1.5 transition-transform" />
               </button>
             </div>
           ))}

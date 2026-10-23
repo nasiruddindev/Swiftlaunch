@@ -12,6 +12,7 @@ import PrivacyModal from './components/PrivacyModal';
 import DemoPreviewModal from './components/DemoPreviewModal';
 import AdminModal from './components/AdminModal';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import CursorEffect from './components/CursorEffect';
 
 export default function App() {
   const [privacyOpen, setPrivacyOpen] = useState(false);
@@ -113,6 +114,9 @@ export default function App() {
       <FloatingWhatsApp
         whatsappNumber={siteConfig.whatsapp}
       />
+
+      {/* Interactive Cursor Follower & Hover Glow */}
+      <CursorEffect />
     </div>
   );
 }
