@@ -1,7 +1,7 @@
 export const siteConfig = {
   brandName: "SwiftLaunch BD",
   tagline: "০ টাকা অগ্রিমে প্রফেশনাল বিজনেস ও স্মার্ট ই-কমার্স ওয়েবসাইট",
-  founder: "নাসির",
+  founder: "নাছির",
   phone: "+880 1889-013446",
   whatsapp: "8801889013446",
   email: "contact@swiftlaunchbd.com",
